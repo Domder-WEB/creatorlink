@@ -3,125 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creator × Editor Hub</title>
+<title>CreatorLink</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="hero fade">
-  <h1>Propojujeme tvůrce a video editory</h1>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">CreatorLink</div>
 
-  <p class="sub">
-    Moderní systém, který spojuje content creatory s profesionálními editory.
-    Žádné zdlouhavé hledání. Žádné DM spamování. Jen čisté propojení.
-  </p>
-
-  <div class="cta">
-    <button onclick="openCreator()">🎥 Hledám editora</button>
-    <button onclick="openEditor()">✂️ Jsem editor</button>
+  <div class="links">
+    <a href="#home">Home</a>
+    <a href="#creators">Creators</a>
+    <a href="#editors">Editors</a>
+    <a href="#forms">Forms</a>
   </div>
-</header>
+</nav>
 
-<section class="section fade">
-  <h2>💡 Jak to funguje</h2>
-
+<!-- HOME -->
+<section id="home" class="hero">
+  <h1>Propojujeme tvůrce a editory</h1>
   <p>
-    Celý systém funguje jako jednoduchý most mezi dvěma světy — tvůrci a editory.
-    Vyplníš formulář a ten se okamžitě odešle do našeho Discord systému, kde se o vše postaráme.
+    CreatorLink je jednoduchý systém, který spojuje content creatory
+    s video editory přes Discord během pár sekund.
   </p>
-
-  <div class="grid">
-    <div class="box">📝 Vyplníš jednoduchý formulář</div>
-    <div class="box">📩 Data jdou do Discordu</div>
-    <div class="box">🤝 Spojíme tě s vhodným člověkem</div>
-  </div>
 </section>
 
-<section class="section dark fade">
+<!-- CREATORS -->
+<section id="creators" class="section dark">
   <h2>🎥 Pro tvůrce</h2>
   <p>
-    Pokud tvoříš obsah na TikTok, YouTube nebo Instagram, nemusíš už hledat editory ručně.
-    Stačí nám říct, jaký styl chceš — a my tě spojíme s někým, kdo přesně sedí tvému obsahu.
+    Nemusíš hledat editory ručně. Stačí vyplnit formulář a my tě spojíme
+    s někým, kdo odpovídá tvému stylu, rozpočtu a tempu.
   </p>
 
   <ul>
-    <li>⚡ Rychlé spojení s editorem</li>
-    <li>🎯 Matching podle stylu a rozpočtu</li>
-    <li>💰 Flexibilní modely spolupráce</li>
+    <li>⚡ rychlé propojení</li>
+    <li>🎯 matching podle stylu</li>
+    <li>💰 flexibilní platby</li>
   </ul>
 </section>
 
-<section class="section fade">
+<!-- EDITORS -->
+<section id="editors" class="section">
   <h2>✂️ Pro editory</h2>
   <p>
-    Už žádné hledání klientů po DM. Tady dostaneš reálné zakázky od tvůrců,
-    kteří přesně potřebují tvůj styl.
+    Získej reálné zakázky bez DM spamování. Tvůrci přijdou za tebou.
   </p>
 
   <ul>
-    <li>💼 Reálné projekty</li>
-    <li>📈 Budování portfolia</li>
-    <li>💸 Stabilní přísun zakázek</li>
+    <li>💼 reálné projekty</li>
+    <li>📈 růst portfolia</li>
+    <li>💸 stabilní příjem</li>
   </ul>
-</section>
-
-<section class="section dark fade">
-  <h2>🔥 Proč to funguje</h2>
-
-  <div class="grid">
-    <div class="box">🚫 Žádný chaos v DM</div>
-    <div class="box">⚡ Rychlé propojení</div>
-    <div class="box">🎯 Matching podle stylu</div>
-  </div>
 </section>
 
 <!-- FORMS -->
-<section id="creatorForm" class="form hidden fade">
-  <h2>🎥 Tvůrce formulář</h2>
+<section id="forms" class="section dark">
 
-  <input id="c_name" placeholder="Jméno / IG @">
-  <input id="c_ig" placeholder="Instagram">
+  <h2>📩 Formuláře</h2>
+  <p>Vyber, kdo jsi:</p>
 
-  <select id="c_platform">
-    <option>TikTok</option>
-    <option>YouTube</option>
-    <option>Instagram Reels</option>
-  </select>
+  <div class="buttons">
+    <button onclick="openCreator()">🎥 Tvůrce</button>
+    <button onclick="openEditor()">✂️ Editor</button>
+  </div>
 
-  <textarea id="c_style" placeholder="Popiš styl videa"></textarea>
+  <!-- CREATOR FORM -->
+  <div id="creatorForm" class="form hidden">
+    <h3>Tvůrce</h3>
 
-  <input id="c_budget" placeholder="Rozpočet">
+    <input id="c_name" placeholder="Jméno / IG @">
+    <input id="c_ig" placeholder="Instagram">
 
-  <select id="c_payment">
-    <option>💳 Subscription (měsíčně)</option>
-    <option>🎬 Per video</option>
-    <option>📈 Revenue share</option>
-  </select>
+    <select id="c_platform">
+      <option>TikTok</option>
+      <option>YouTube</option>
+      <option>Instagram</option>
+    </select>
 
-  <textarea id="c_extra" placeholder="Další informace"></textarea>
+    <textarea id="c_style" placeholder="Styl videa"></textarea>
 
-  <button onclick="sendCreator()">Odeslat do Discordu</button>
-</section>
+    <input id="c_budget" placeholder="Rozpočet">
 
-<section id="editorForm" class="form hidden fade">
-  <h2>✂️ Editor formulář</h2>
+    <select id="c_payment">
+      <option>Subscription</option>
+      <option>Per video</option>
+      <option>Revenue share</option>
+    </select>
 
-  <input id="e_name" placeholder="Jméno">
-  <input id="e_ig" placeholder="Instagram / portfolio">
+    <textarea id="c_extra" placeholder="Další info"></textarea>
 
-  <textarea id="e_skills" placeholder="Skills"></textarea>
+    <button onclick="sendCreator()">Odeslat do Discordu</button>
+  </div>
 
-  <input id="e_price" placeholder="Cena za video">
+  <!-- EDITOR FORM -->
+  <div id="editorForm" class="form hidden">
+    <h3>Editor</h3>
 
-  <select id="e_payment">
-    <option>💳 Subscription</option>
-    <option>🎬 Per video</option>
-    <option>📈 Revenue share</option>
-  </select>
+    <input id="e_name" placeholder="Jméno">
+    <input id="e_ig" placeholder="IG / portfolio">
 
-  <textarea id="e_portfolio" placeholder="Portfolio link"></textarea>
+    <textarea id="e_skills" placeholder="Skills"></textarea>
 
-  <button onclick="sendEditor()">Odeslat do Discordu</button>
+    <input id="e_price" placeholder="Cena za video">
+
+    <select id="e_payment">
+      <option>Subscription</option>
+      <option>Per video</option>
+      <option>Revenue share</option>
+    </select>
+
+    <textarea id="e_portfolio" placeholder="Portfolio"></textarea>
+
+    <button onclick="sendEditor()">Odeslat do Discordu</button>
+  </div>
+
 </section>
 
 <script src="script.js"></script>
