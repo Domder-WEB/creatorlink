@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creator × Editor Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <h1>Propojujeme tvůrce a video editory</h1>
+  <p>Jednoduché spojení bez zbytečností. Vše jde přímo do Discordu.</p>
+</header>
+
+<!-- INFO TEXT -->
+<section class="info">
+  <p>
+    Tento systém funguje jako prostředník mezi tvůrci a editory.
+    Vyplníš formulář a tvůj požadavek se okamžitě odešle do našeho Discord serveru,
+    kde se s tebou spojíme.
+  </p>
+</section>
+
+<!-- BUTTONS -->
+<section class="buttons">
+  <button onclick="showCreator()">🎥 Hledám editora</button>
+  <button onclick="showEditor()">✂️ Jsem editor</button>
+</section>
+
+<!-- CREATOR FORM -->
+<section id="creatorForm" class="form hidden">
+  <h2>Tvůrce</h2>
+
+  <input id="c_name" placeholder="Jméno / IG @">
+  <input id="c_ig" placeholder="Instagram">
+
+  <select id="c_platform">
+    <option>TikTok</option>
+    <option>YouTube</option>
+    <option>Instagram Reels</option>
+  </select>
+
+  <textarea id="c_style" placeholder="Jaký styl editace chceš?"></textarea>
+
+  <input id="c_budget" placeholder="Rozpočet">
+
+  <select id="c_payment">
+    <option>Subscription (měsíčně)</option>
+    <option>Per video</option>
+    <option>Revenue share</option>
+  </select>
+
+  <textarea id="c_extra" placeholder="Další informace"></textarea>
+
+  <button onclick="sendCreator()">Odeslat do Discordu</button>
+</section>
+
+<!-- EDITOR FORM -->
+<section id="editorForm" class="form hidden">
+  <h2>Editor</h2>
+
+  <input id="e_name" placeholder="Jméno">
+  <input id="e_ig" placeholder="Instagram / portfolio">
+
+  <textarea id="e_skills" placeholder="Skills"></textarea>
+
+  <input id="e_price" placeholder="Cena za video">
+
+  <select id="e_payment">
+    <option>Subscription</option>
+    <option>Per video</option>
+    <option>Revenue share</option>
+  </select>
+
+  <textarea id="e_portfolio" placeholder="Portfolio link"></textarea>
+
+  <button onclick="sendEditor()">Odeslat do Discordu</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
