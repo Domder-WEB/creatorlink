@@ -1,8 +1,11 @@
 // ==========================
-// 🔗 DISCORD WEBHOOKS
+// 🔗 PROXY ENDPOINT
 // ==========================
-const CREATOR_WEBHOOK = "YOUR_CREATOR_WEBHOOK";
-const EDITOR_WEBHOOK  = "YOUR_EDITOR_WEBHOOK";
+// Místo přímého volání Discord webhooku voláme náš Cloudflare Worker,
+// který webhook URL skrývá na serveru a request si ověří/omezí.
+// AŽ NASADÍŠ WORKER, DOPLŇ SEM JEHO URL (uvidíš ji v Cloudflare dashboardu,
+// vypadá podobně jako https://creatorlink-proxy.tvuj-ucet.workers.dev)
+const PROXY_ENDPOINT = "https://creatorlink.dominiktaras42.workers.dev/";
 
 // ==========================
 // 📱 MOBILE NAV
@@ -94,31 +97,20 @@ async function sendCreator() {
   }
 
   const payload = {
-    content:
-`🎥 **NEW CREATOR REQUEST**
-━━━━━━━━━━━━━━━━━━
-👤 Name: ${name}
-📸 Instagram: ${ig}
-📱 Platform: ${platform}
-🎬 Style:
-${style}
-💰 Budget:
-${budget}
-💳 Payment model:
-${payment}
-📝 Extra info:
-${extra}
-━━━━━━━━━━━━━━━━━━`
+    type: "creator",
+    name, ig, platform, style, budget, payment, extra
   };
 
   setLoading("c_submit", true);
 
   try {
-    await fetch(CREATOR_WEBHOOK, {
+    const res = await fetch(PROXY_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
+
+    if (!res.ok) throw new Error("Request failed");
 
     notify("Request sent. We'll be in touch within 24h.", "success");
     clearFields(["c_name", "c_ig", "c_style", "c_budget", "c_extra"]);
@@ -147,30 +139,20 @@ async function sendEditor() {
   }
 
   const payload = {
-    content:
-`✂️ **NEW EDITOR APPLICATION**
-━━━━━━━━━━━━━━━━━━
-👤 Name: ${name}
-📸 Instagram: ${ig}
-⚡ Skills:
-${skills}
-💰 Price:
-${price}
-💳 Payment model:
-${payment}
-📁 Portfolio:
-${portfolio}
-━━━━━━━━━━━━━━━━━━`
+    type: "editor",
+    name, ig, skills, price, payment, portfolio
   };
 
   setLoading("e_submit", true);
 
   try {
-    await fetch(EDITOR_WEBHOOK, {
+    const res = await fetch(PROXY_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
+
+    if (!res.ok) throw new Error("Request failed");
 
     notify("Application sent. We'll be in touch within 24h.", "success");
     clearFields(["e_name", "e_ig", "e_skills", "e_price", "e_portfolio"]);
